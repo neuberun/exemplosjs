@@ -60,18 +60,12 @@ function limpar_lista() {
 }
 
 // métodos de ordenação
-
 bubble_sort = () => {
-    // iteração externa
     for (let i = 0; i < arr.length; i++) {
 
-        // iteração interna
         for (let j = 0; j < arr.length - i - 1; j++) {
 
-            // comparação de valores em ordem ascendente
             if (arr[j + 1] < arr[j]) {
-
-                // trocas
                 [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]]
             }
         }
@@ -82,19 +76,15 @@ selection_sort = () => {
     let min;
 
     for (let i = 0; i < arr.length; i++) {
-        // índice do menor valor
         min = i;
 
-        // checar o resto da lista por um valor menor
         for (let j = i + 1; j < arr.length; j++) {
             if (arr[j] < arr[min]) {
                 min = j;
             }
         }
 
-        // comparar os índices
         if (min !== i) {
-            // trocar
             [arr[i], arr[min]] = [arr[min], arr[i]];
         }
     }
@@ -107,35 +97,29 @@ quick_sort = (arr, posicao_inicial, posicao_final) => {
         index = particionamento(arr, posicao_inicial, posicao_final);
 
         if (posicao_inicial < index - 1) {
-            // mais valores ao lado da posição inicial
             quick_sort(arr, posicao_inicial, index - 1);
         }
 
         if (index < posicao_final) {
-            // mais valores ao lado da posião final
             quick_sort(arr, index, posicao_final);
         }
     }
 }
 
-// função de apoio ao algoritmo quick_sort 
 particionamento = (arr, posicao_inicial, posicao_final) => {
     let pivot = arr[Math.floor((posicao_final + posicao_inicial) / 2)],
         i = posicao_inicial,
         j = posicao_final;
 
     while (i <= j) {
-        // incrementar o ponteiro da posição inicial se o valor or menor que o pivot
         while (arr[i] < pivot) {
             i++;
         }
 
-        // decrementar o ponteiro da posição final se o valor for maior que o pivot
         while (arr[j] > pivot) {
             j--;
         }
 
-        // senão troque
         if (i <= j) {
             [arr[i], arr[j]] = [arr[j], arr[i]];
             i++;
